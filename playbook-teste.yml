@@ -1,14 +1,17 @@
 ---
-# Ansible playbook to run Windows Update and restart, if required
-#
-# http://docs.ansible.com/ansible/win_updates_module.html
-# https://docs.ansible.com/ansible/win_reboot_module.html
+# Playbook para instalar o zabbix-agent em hosts Linux
 
-- name:  INstall Firefox
+- name:  Install Zabbix Agent
   hosts: all
   gather_facts: false
   tasks:
-    - name: Install Firefox
+    - name: Install Zabbix Agent
       win_chocolatey:
-        name: firefox
-        state: present
+        name: zabbix-agent
+        state: started
+
+- name: adicionado nome do host
+  action: raw sed -i "s/Hostname=zabbixserver.luxfacta.com.br"{{ hname.stdout }}"/g" /etc/zabbix/zabbix_agentd.conf
+
+
+
