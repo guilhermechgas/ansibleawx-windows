@@ -12,10 +12,12 @@
     raw: 'sudo yum -y install python'
  
   tasks:
+  - name: 'install zabbix agent'
+  
     role: lean_delivery.zabbix_agent
-    zabbix_agent_server: zabbixserver.luxfacta.com.br
-    zabbix_agent_serveractive: zabbixserver.luxfacta.com.br
-    zabbix_agent_hostmetadata: zabbixserver.luxfacta.com.br 
+    - zabbix_agent_server: zabbixserver.luxfacta.com.br
+    - zabbix_agent_serveractive: zabbixserver.luxfacta.com.br
+    - zabbix_agent_hostmetadata: zabbixserver.luxfacta.com.br 
    
        
 
