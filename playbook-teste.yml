@@ -1,15 +1,24 @@
 ---
-# Playbook para instalar o zabbix-agent em hosts Linux
-- name: Install Python
-  raw: yum -y install python
-  when: check_python.rc != 0
-      
 - hosts: all
-  roles:
-    - role: lean_delivery.zabbix_agent
-  zabbix_agent_server: 192.168.50.29
-  zabbix_agent_serveractive: 192.168.50.29
-  zabbix_url: zabbixserver.luxfacta.com.br
+  remote_user: root
+  gather_facts: false
+  tasks:
+
+  - name: Check for Python
+      raw: test -e /usr/bin/python
+      changed_when: false
+      failed_when: false
+      register: check_python
+
+ - name: Install Python
+      raw: yum -y install python
+      when: check_python.rc != 0
+ 
+ - roles:
+      role: lean_delivery.zabbix_agent
+      zabbix_agent_server: 192.168.50.29
+      zabbix_agent_serveractive: 192.168.50.29
+      zabbix_url: zabbixserver.luxfacta.com.br
        
    
        
