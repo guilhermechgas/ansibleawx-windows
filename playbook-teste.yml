@@ -11,7 +11,7 @@
         state: started
 
 - name: Change Hostname
-  action: raw sed -i "s/Hostname=zabbixserver.luxfacta.com.br"{{ hname.stdout }}"/g" /etc/zabbix/zabbix_agentd.conf
+  tasks: raw sed -i "s/Hostname=zabbixserver.luxfacta.com.br"{{ hname.stdout }}"/g" /etc/zabbix/zabbix_agentd.conf
 
 
 
