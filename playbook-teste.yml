@@ -1,19 +1,17 @@
 ---
 # Playbook para instalar o zabbix-agent em hosts Linux
-
-- name: install python2 on ubuntu 18.04 instances
-     hosts: all
-      gather_facts: false
-      tasks:
-         -  name: yum install python
-         raw: "{{ item }}"
-         loop:
-        - sudo yum -y install python
-         become: true
+- name: Check for Python
+      raw: test -e /usr/bin/python
+      changed_when: false
+      failed_when: false
+      register: check_python
+- name: Install Python
+      raw: yum -y install python
+      when: check_python.rc != 0
       
 - hosts: all
-  roles:
-     - role: lean_delivery.zabbix_agent
+       roles:
+       - role: lean_delivery.zabbix_agent
        vars:
          ansible_python_interpreter: /usr/bin/python3
        zabbix_agent_server: 192.168.50.29
