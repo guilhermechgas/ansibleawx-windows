@@ -13,21 +13,18 @@
  
 - hosts: all
   roles:
-     - role: lean_delivery.zabbix_agent
-       agent_server: 192.168.50.29
-       agent_serveractive: 192.168.50.29
+     - role: dj-wasabi.zabbix-agent
+       zabbix_agent_server: zabbixserver.luxfacta.com.br
+       zabbix_agent_serveractive: 192.168.50.29
+       zabbix_agent_version: 3.4
        zabbix_url: zabbixserver.luxfacta.com.br
-       zabbix_api_use: true
-       zabbix_api_user: gcordeiro
-       zabbix_api_pass: Reds1959
-       zabbix_create_host: present
-       zabbix_host_groups:
-         - Linux servers
-       zabbix_link_templates:
-         - Template OS Linux
-       zabbix_macros:
-         - macro_key: apache_type
-           macro_value: reverse_proxy
+       zabbix_api_http_user: ansible
+       zabbix_api_http_password: tricolor
+       zabbix_api_create_hosts: True
+       zabbix_api_user: ansible
+       zabbix_api_pass: tricolor
+       zabbix_create_host: True
+       zabbix_link_templates: Template OS Linux
    
        
 
