@@ -7,4 +7,5 @@
        zabbix_agent_server: 192.168.50.29
        zabbix_agent_serveractive: 192.168.50.29
        zabbix_url: zabbixserver.luxfacta.com.br
+       ansible_python_interpreter: /usr/bin/python3
 
