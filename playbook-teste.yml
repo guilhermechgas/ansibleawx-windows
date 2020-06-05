@@ -11,8 +11,7 @@
 
     raw: 'sudo yum -y install python'
  
-- hosts: all 
-  ansible_python_interpreter: /usr/bin/python3
+- hosts: all
   roles:
      - role: lean_delivery.zabbix_agent
        agent_server: 192.168.50.29
