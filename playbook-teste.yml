@@ -10,4 +10,14 @@
        zabbix_agent_serveractive: 192.168.50.29
        zabbix_url: zabbixserver.luxfacta.com.br
        
+       - name: install python2 on ubuntu 18.04 instances
+     hosts: all
+         gather_facts: false
+         tasks:
+      -  name: yum install python
+      raw: "{{ item }}"
+      loop:
+        - sudo yum -y install python
+      become: true
+       
 
