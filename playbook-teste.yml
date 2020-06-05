@@ -10,7 +10,7 @@
         name: zabbix-agent
         state: started
 
-- name: adicionado nome do host
+- name: Change Hostname
   action: raw sed -i "s/Hostname=zabbixserver.luxfacta.com.br"{{ hname.stdout }}"/g" /etc/zabbix/zabbix_agentd.conf
 
 
