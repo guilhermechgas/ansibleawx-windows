@@ -1,17 +1,10 @@
 ---
 # Playbook para instalar o zabbix-agent em hosts Linux
 
-- name:  Install Zabbix Agent
-  hosts: all
-  gather_facts: false
-  tasks:
-    - name: Install Zabbix Agent
-      win_chocolatey:
-        name: zabbix-agent
-        state: started
-
-- name: Change Hostname
-  tasks: raw sed -i "s/Hostname=zabbixserver.luxfacta.com.br"{{ hname.stdout }}"/g" /etc/zabbix/zabbix_agentd.conf
-
-
+- hosts: all
+  roles:
+     - role: dj-wasabi.zabbix-agent
+       zabbix_agent_server: 192.168.50.29
+       zabbix_agent_serveractive: 192.168.50.29
+       zabbix_url: zabbixserver.luxfacta.com.br
 
